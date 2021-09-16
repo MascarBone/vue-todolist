@@ -10,10 +10,33 @@ ul {
 li::before {
     content: '\02D7';
     margin-right: 8px;
-
+    
 }
 
+.item-completed {
+    text-decoration: line-through;
+    text-decoration-thickness: 3px;
+}
+.my_btn-input{
+    font-size: 1.6rem;
+    font-weight: 400;
+    background-color: white;
+    vertical-align: middle;
+    border: 1px solid rgba(0, 0, 0, 0.411);
+    border-radius: 5px;
+}
+.todolist-item i {
+    display: none;
+}
+/* ########## EFFECTS ########## */
+
+.my_btn-input:active {
+    filter: invert();
+}
 .todolist-item i:hover{
     cursor: pointer;
     transform: scale(135%);
+}
+.todolist-item:hover i{
+    display: inline-block;
 }

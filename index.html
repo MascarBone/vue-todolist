@@ -22,18 +22,33 @@
 <body>  
     <div id="app">
 
-        <header class="mb-5">
-
+        <header class="mt-5">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <h2>{{titleList}}</h2>
+                    </div>
+                </div>
+            </div>
         </header>
         
         <main>
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h2>{{titleList}}</h2>
-                        <ul>
-                            <li class="todolist-item" v-for="(element, index) in toDoList">{{element}}<i @click="removeItem(index)" class="far fa-times-circle ms-3"></i></li>
-                        </ul>
+                        <div class="row mb-5">
+                            <div class="col-12">
+                                <input v-on:keyup.enter="keyUpInput" v-model="inputItem" name="input-text-item" placeholder="Insert Item" class="align-middle me-5">
+                                <button @click="addItem" type="submit" class="my_btn-input">Aggiungi</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <ul>
+                                    <li class="todolist-item" v-for="(element, index, x) in toDoList"><span @click="lineThrough(element)" :class="element.completed ? 'item-completed' : '' ">{{element.listItem}}</span><i @click="removeItem(index)" class="far fa-times-circle ms-3"></i></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
