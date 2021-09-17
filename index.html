@@ -37,16 +37,25 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="row mb-5">
-                            <div class="col-12">
+                            <div class="col-6">
                                 <input v-on:keyup.enter="keyUpInput" v-model="inputItem" name="input-text-item" placeholder="Insert Item" class="align-middle me-5">
-                                <button @click="addItem" type="submit" class="my_btn-input">Aggiungi</button>
+                                <button @click="addItem" type="submit" class="my_btn">Aggiungi</button>
+                            </div>
+                            <div class="col-6 text-end">
+                                <span class="align-middle me-3">Rimuovi elementi sbarrati</span>
+                                <button @click="removeAllItem()" class="my_btn">Rimuovi</button>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <ul>
-                                    <li class="todolist-item" v-for="(element, index, x) in toDoList"><span @click="lineThrough(element)" :class="element.completed ? 'item-completed' : '' ">{{element.listItem}}</span><i @click="removeItem(index)" class="far fa-times-circle ms-3"></i></li>
+                                <ul v-if="toDoList.length > 0">
+                                    <li class="todolist-item" v-for="(element, index) in toDoList">
+                                        <!-- alternative :class="element.completed ? 'line-through' : '' " for span -->
+                                        <span @click="toggleCompleted(element)" :class="{'line-through' : element.completed}">{{element.listItem}}</span>
+                                        <i @click="removeItem(index)" class="far fa-times-circle ms-3"></i>
+                                    </li>
                                 </ul>
+                                <h3 v-else>Completed All Tasks</h3>
                             </div>
                         </div>
                     </div>

@@ -13,11 +13,11 @@ li::before {
     
 }
 
-.item-completed {
+.line-through {
     text-decoration: line-through;
     text-decoration-thickness: 3px;
 }
-.my_btn-input{
+.my_btn{
     font-size: 1.6rem;
     font-weight: 400;
     background-color: white;

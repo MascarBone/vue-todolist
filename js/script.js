@@ -55,34 +55,53 @@ const app = new Vue ({
     },
 
     methods: {
+        // removeItem() {
         removeItem: function(index) {
             this.toDoList.splice(index, 1);
         },
 
-        addObj: function() {
-            
+        // removeAllItem() {
+        removeAllItem: function() {
+            // this.toDoList.forEach(function(element, index, array) {
+            //     // console.log(element.listItem, index);
+            //     if (element.completed) {
+            //         array.splice(index, 1);
+            //     }
+            // });
+
+            // 'For' that start from the end of the array
+            // and remove every item with -completed- as true
+            for (let i = this.toDoList.length-1; i >= 0; i--)
+            {
+                if(this.toDoList[i].completed)
+                {
+                    this.toDoList.splice(i, 1);
+                }
+            }
         },
 
+        // addItem() {
         addItem: function() {
             if(this.inputItem.trim().length > 0)
-            {
-                // let obj = {listItem: this.inputItem, completed: false}
+            {                
                 this.toDoList.push({listItem: this.inputItem.trim(), completed: false});
             }        
             this.inputItem = '';
         },
 
+        // keyUpInput() {
         keyUpInput: function() {
-            // console.log('pressed enter', this.inputItem);
             this.addItem();
         },
 
-        lineThrough: function(element) {
-            if(element.completed) {
-                element.completed = false;
-            }else {
-                element.completed = true;
-            }
+        // toggleCompleted(element) {
+        toggleCompleted: function(element) {
+            element.completed = !element.completed;
+            // if(element.completed) {
+            //     element.completed = false;
+            // }else {
+            //     element.completed = true;
+            // }
         }
     },
 });
